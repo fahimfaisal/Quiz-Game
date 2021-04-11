@@ -1,0 +1,49 @@
+{
+  "questions":[
+
+  {
+    "question" : "If a girl eat 3 oranges a day,how many oranges needed for 5 days? ",
+
+    "A": "15 Oranges",
+    "B" : "12 Oranges",
+    "C" : "8 Oranges",
+    "correct" : "A"
+  },
+  {
+    "question" : "A car runs with speed of 36 KM per hour, How much time it will require to go 180 KM? ",
+
+    "A" : "5 HOURS",
+    "B" : "3 HOURS",
+    "C" : "8 HOURS",
+    "correct" : "A"
+  },
+  {
+    "question" : "If a person can build a wall in 3 days, How much time it will take to make 16 walls",
+
+    "A" : "19 DAYS",
+    "B" : "48 DAYS",
+    "C" : "30 DAYS",
+    "correct" : "B"
+  },
+  {
+    "question" : "If henry eats a pie in 2 minutes and apple in 3 minutes, How much time in total he eats?",
+
+    "A" : "6 Minutes",
+    "B" : "7 Minutes",
+    "C" : "5 Minutes",
+    "correct" : "C"
+  },
+  {
+    "question" : "A man works in a 10 hours shift, where break is 2 hours.How many hours he works?",
+
+    "A" : "12 Hours",
+    "B" : "10 Hours",
+    "C" : "8 Hours",
+    "correct" : "C"
+  }
+
+
+  ]
+
+
+}
