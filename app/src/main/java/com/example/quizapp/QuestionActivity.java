@@ -30,10 +30,11 @@ import java.util.TimerTask;
 
 public class QuestionActivity extends AppCompatActivity {
     TextView question;
+    TextView progressview;
     Button option1;
     Button option2;
     Button option3;
-    Button option4;
+    Button submit;
     String selection;
     ArrayList<String> questions = new ArrayList<>();
     ArrayList<String> answer1 = new ArrayList<>();
@@ -41,6 +42,7 @@ public class QuestionActivity extends AppCompatActivity {
     ArrayList<String> answer3 = new ArrayList<>();
     ArrayList<String> correct = new ArrayList<>();
     int progress = 0;
+    int quesNo= 1;
     int score = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,8 @@ public class QuestionActivity extends AppCompatActivity {
         option1 = (Button) findViewById(R.id.answer1);
         option2 = (Button) findViewById(R.id.answer2);
         option3 = (Button) findViewById(R.id.answer3);
-        option4 = (Button) findViewById(R.id.answer4);
+        submit = (Button) findViewById(R.id.submit);
+        progressview = (TextView) findViewById(R.id.progress);
 
         LoadJson();
         Run();
@@ -119,8 +122,8 @@ public class QuestionActivity extends AppCompatActivity {
     {
         if (selection.equals(correct.get(progress)))
         {
-            progress++;
             score++;
+
         }
         else{
 
@@ -137,9 +140,12 @@ public class QuestionActivity extends AppCompatActivity {
             {
                 option3.setBackgroundColor(Color.RED);
             }
-            progress++;
+
         }
 
+        progress++;
+        quesNo++;
+        selection = null;
 
 
     }
@@ -159,6 +165,10 @@ public class QuestionActivity extends AppCompatActivity {
     {
 
         ButtonReset();
+        progressview.setText("Question " + quesNo + " out of " + questions.size());
+
+
+
         question.setText(questions.get(place));
         option1.setText(answer1.get(place));
         option2.setText(answer2.get(place));
@@ -167,11 +177,14 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
 
-
+    public void AvoidSelection()
+    {
+        selection = null;
+    }
 
     public void CheckA(View view){
         ButtonReset();
-        option1.setBackgroundColor(Color.BLACK);
+        option1.setBackgroundColor(Color.GREEN);
         selection= "A";
 
 
@@ -180,14 +193,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void CheckB(View view){
         ButtonReset();
-        option2.setBackgroundColor(Color.BLACK);
+        option2.setBackgroundColor(Color.GREEN);
         selection= "B";
 
     }
 
     public void CheckC(View view){
         ButtonReset();
-        option3.setBackgroundColor(Color.BLACK);
+        option3.setBackgroundColor(Color.GREEN);
 
         selection= "C";
     }
@@ -197,29 +210,29 @@ public class QuestionActivity extends AppCompatActivity {
     public void Submit(View view)
     {
 
-        CheckAnswer();
+        if (selection == null)
+        {
+            progressview.setText("Please select an option");
+        }
+        else
+        {
+            CheckAnswer();
 
-        final Handler handler = new Handler();
+            final Handler handler = new Handler();
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
-                RenderQuestion(progress);
-            }
-        }, 3000);
+                    RenderQuestion(progress);
+                }
+            }, 3000);
 
-
-
-
-
+        }
 
 
 
 
     }
-
-
-
 
 }
