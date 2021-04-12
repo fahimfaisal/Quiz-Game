@@ -72,7 +72,7 @@ public class QuestionActivity extends AppCompatActivity {
     public  void nextpage()
     {
         myIntent = new Intent(this, FinalScreen.class);
-        myIntent.putExtra("name", playerName);
+        SendData();
         startActivity(myIntent);
     }
 
@@ -102,10 +102,22 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void Run()
     {
-        Intent intent = getIntent();
-        playerName = intent.getStringExtra("name");
+
         RenderQuestion(progress);
 
+    }
+
+    public void SendData()
+    {
+        Bundle b = new Bundle();
+        Intent intent = getIntent();
+        playerName = intent.getStringExtra("name");
+
+
+        b.putString("name",playerName);
+        b.putString("score", String.valueOf(score));
+        b.putString("total", String.valueOf(questions.size()));
+        myIntent.putExtras(b);
     }
 
 
@@ -129,27 +141,83 @@ public class QuestionActivity extends AppCompatActivity {
         return  json;
     }
 
+    public void change(int color)
+    {
+        if (selection.equals("A"))
+        {
+            option1.setBackgroundColor(color);
+        }
+        else if (selection.equals("B"))
+        {
+            option2.setBackgroundColor(color);
+
+        }
+        else if(selection.equals("C"))
+        {
+            option3.setBackgroundColor(color);
+        }
+
+    }
+
     public void CheckAnswer()
     {
         if (selection.equals(correct.get(progress)))
         {
             score++;
 
+            if (selection.equals("A"))
+            {
+                option1.setBackgroundColor(Color.GREEN);
+            }
+            else if (selection.equals("B"))
+            {
+                option2.setBackgroundColor(Color.GREEN);
+
+            }
+            else if(selection.equals("C"))
+            {
+                option3.setBackgroundColor(Color.GREEN);
+            }
+
+
         }
         else{
 
-            if (correct.get(progress).equals("A"))
+
+            if (selection.equals("A"))
             {
                 option1.setBackgroundColor(Color.RED);
             }
-            else if (correct.get(progress).equals("B"))
+            else if (selection.equals("B"))
             {
                 option2.setBackgroundColor(Color.RED);
 
             }
-            else if(correct.get(progress).equals("C"))
+            else if(selection.equals("C"))
             {
                 option3.setBackgroundColor(Color.RED);
+            }
+
+
+
+
+
+
+
+
+
+            if (correct.get(progress).equals("A"))
+            {
+                option1.setBackgroundColor(Color.GREEN);
+            }
+            else if (correct.get(progress).equals("B"))
+            {
+                option2.setBackgroundColor(Color.GREEN);
+
+            }
+            else if(correct.get(progress).equals("C"))
+            {
+                option3.setBackgroundColor(Color.GREEN);
             }
 
         }
@@ -163,6 +231,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void ButtonReset()
     {
+        progressview.setTextColor(Color.BLACK);
         option1.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),
             R.color.purple_700));
         option2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),
@@ -195,7 +264,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void CheckA(View view){
         ButtonReset();
-        option1.setBackgroundColor(Color.GREEN);
+        option1.setBackgroundColor(Color.rgb(255,200,0));
         selection= "A";
 
 
@@ -204,14 +273,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void CheckB(View view){
         ButtonReset();
-        option2.setBackgroundColor(Color.GREEN);
+        option2.setBackgroundColor(Color.rgb(255,200,0));
         selection= "B";
 
     }
 
     public void CheckC(View view){
         ButtonReset();
-        option3.setBackgroundColor(Color.GREEN);
+        option3.setBackgroundColor(Color.rgb(255,200,0));
 
         selection= "C";
     }
@@ -224,6 +293,7 @@ public class QuestionActivity extends AppCompatActivity {
         if (selection == null)
         {
             progressview.setText("Please select an option");
+            progressview.setTextColor(Color.RED);
         }
         else
         {
