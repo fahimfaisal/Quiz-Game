@@ -1,6 +1,7 @@
 package com.example.quizapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -20,7 +21,7 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.content.Intent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class QuestionActivity extends AppCompatActivity {
     TextView progressview;
     Button option1;
     Button option2;
+    Intent myIntent;
     Button option3;
     Button submit;
     String selection;
@@ -44,6 +46,7 @@ public class QuestionActivity extends AppCompatActivity {
     int progress = 0;
     int quesNo= 1;
     int score = 0;
+    String playerName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,14 @@ public class QuestionActivity extends AppCompatActivity {
 
 
 
+
+
+    }
+    public  void nextpage()
+    {
+        myIntent = new Intent(this, FinalScreen.class);
+        myIntent.putExtra("name", playerName);
+        startActivity(myIntent);
     }
 
     public void LoadJson(){
@@ -91,9 +102,9 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void Run()
     {
+        Intent intent = getIntent();
+        playerName = intent.getStringExtra("name");
         RenderQuestion(progress);
-
-
 
     }
 
@@ -224,9 +235,17 @@ public class QuestionActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    RenderQuestion(progress);
+                    if (progress+1>questions.size())
+                    {
+                        nextpage();
+                        finish();
+                    }
+                    else{
+                        RenderQuestion(progress);
+                    }
+
                 }
-            }, 3000);
+            }, 1000);
 
         }
 
