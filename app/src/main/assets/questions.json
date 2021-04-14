@@ -2,46 +2,45 @@
   "questions":[
 
   {
-    "question" : "If a girl eat 3 oranges a day,how many oranges needed for 5 days? ",
+    "question" : "Which method returns the intent that started the current activity?",
 
-    "A": "15 Oranges",
-    "B" : "12 Oranges",
-    "C" : "8 Oranges",
+    "A": "getIntent()",
+    "B" : "fetchIntent()",
+    "C" : "showIntent()",
     "correct" : "A"
   },
   {
-    "question" : "A car runs with speed of 36 KM per hour, How much time it will require to go 180 KM? ",
+    "question" : "In android, the activities are arranged in a _________ ",
 
-    "A" : "5 HOURS",
-    "B" : "3 HOURS",
-    "C" : "8 HOURS",
+    "A" : "Stack",
+    "B" : "Queue",
+    "C" : "List",
     "correct" : "A"
   },
   {
-    "question" : "If a person can build a wall in 3 days, How much time it will take to make 16 walls",
+    "question" : "Which method is used for sending a value from one activity to another activity",
 
-    "A" : "19 DAYS",
-    "B" : "48 DAYS",
-    "C" : "30 DAYS",
+    "A" : "sendExtra()",
+    "B" : "putExtra()",
+    "C" : "putValue()",
     "correct" : "B"
   },
   {
-    "question" : "If henry eats a pie in 2 minutes and apple in 3 minutes, How much time in total he eats?",
+    "question" : "Which is an invisible container that defines the layout structure of a View ",
 
-    "A" : "6 Minutes",
-    "B" : "7 Minutes",
-    "C" : "5 Minutes",
+    "A" : "ViewStack",
+    "B" : "LayoutView",
+    "C" : "ViewGroup",
     "correct" : "C"
   },
   {
-    "question" : "A man works in a 10 hours shift, where break is 2 hours.How many hours he works?",
+    "question" : "Which is the main language in android studio for developing application",
 
-    "A" : "12 Hours",
-    "B" : "10 Hours",
-    "C" : "8 Hours",
+    "A" : "C#",
+    "B" : "PASCAL",
+    "C" : "JAVA",
     "correct" : "C"
   }
-
 
   ]
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
         private Button button;
@@ -26,11 +27,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void start(View view){
-        Intent questionIntent = new Intent(this, QuestionActivity.class);
+        public void start(View view){
 
-        questionIntent.putExtra("name", name.getText().toString());
-        startActivity(questionIntent);
+        if (name.getText().toString().isEmpty())
+        {
+            Toast.makeText(getApplicationContext(),"Please Enter Your Name",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Intent questionIntent = new Intent(this, QuestionActivity.class);
+            questionIntent.putExtra("name", name.getText().toString());
+            startActivity(questionIntent);
+
+
+
+        }
 
     }
 

@@ -23,10 +23,7 @@ public class FinalScreen extends AppCompatActivity {
         yourScore = (TextView) findViewById(R.id.yourscore);
         score = (TextView) findViewById(R.id.score);
 
-        Bundle getValue = getIntent().getExtras();
-        name = getValue.getString("name");
-        totalScore = getValue.getString("score");
-        total = getValue.getString("total");
+        GetValue();
 
 
         nameView.setText("Congratulations " + name +" !");
@@ -34,9 +31,12 @@ public class FinalScreen extends AppCompatActivity {
         score.setText(totalScore +"/"+total);
     }
 
-    public  void  getValue()
+    public  void  GetValue()
     {
-
+        Bundle getValue = getIntent().getExtras();
+        name = getValue.getString("name");
+        totalScore = getValue.getString("score");
+        total = getValue.getString("total");
     }
 
     public void Finish(View view)
@@ -45,9 +45,6 @@ public class FinalScreen extends AppCompatActivity {
     }
     public void Back(View view)
     {
-
         finish();
-
-
     }
 }

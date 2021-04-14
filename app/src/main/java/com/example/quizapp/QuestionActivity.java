@@ -59,7 +59,7 @@ public class QuestionActivity extends AppCompatActivity {
         option3 = (Button) findViewById(R.id.answer3);
         submit = (Button) findViewById(R.id.submit);
         progressview = (TextView) findViewById(R.id.progress);
-
+       AvoidCapital();
         LoadJson();
         Run();
 
@@ -74,6 +74,12 @@ public class QuestionActivity extends AppCompatActivity {
         myIntent = new Intent(this, FinalScreen.class);
         SendData();
         startActivity(myIntent);
+    }
+    public void AvoidCapital()
+    {
+        option1.setTransformationMethod(null);
+        option2.setTransformationMethod(null);
+        option3.setTransformationMethod(null);
     }
 
     public void LoadJson(){
@@ -165,46 +171,13 @@ public class QuestionActivity extends AppCompatActivity {
         {
             score++;
 
-            if (selection.equals("A"))
-            {
-                option1.setBackgroundColor(Color.GREEN);
-            }
-            else if (selection.equals("B"))
-            {
-                option2.setBackgroundColor(Color.GREEN);
-
-            }
-            else if(selection.equals("C"))
-            {
-                option3.setBackgroundColor(Color.GREEN);
-            }
+          change(Color.GREEN);
 
 
         }
         else{
 
-
-            if (selection.equals("A"))
-            {
-                option1.setBackgroundColor(Color.RED);
-            }
-            else if (selection.equals("B"))
-            {
-                option2.setBackgroundColor(Color.RED);
-
-            }
-            else if(selection.equals("C"))
-            {
-                option3.setBackgroundColor(Color.RED);
-            }
-
-
-
-
-
-
-
-
+            change(Color.RED);
 
             if (correct.get(progress).equals("A"))
             {
@@ -224,7 +197,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         progress++;
         quesNo++;
-        selection = null;
+        AvoidSelection();
 
 
     }
@@ -311,7 +284,7 @@ public class QuestionActivity extends AppCompatActivity {
                         finish();
                     }
                     else{
-                        RenderQuestion(progress);
+                        Run();
                     }
 
                 }
